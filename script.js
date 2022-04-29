@@ -1,7 +1,7 @@
 const data = {
-  p1: 340,
-  p2: 30,
-  p3: 100
+	p1: [340,100], 
+  p2: [30,100],
+  p3: [100,100]
 };
 
 let img;
@@ -18,10 +18,12 @@ function setup() {
 
 function draw() {
   for (let value in data) {
-    const x = data[value];
-    const y = data[value];
+    const dictValue = data[value]
+    const x = dictValue[0];
+    const y =  dictValue[1];
     fill(255,0,0);
     circle(x, y, 10);
-    console.log("Print "+ x +" circle");
+    console.log("Printed circle at ("+ x +","+y+")");
   }
+  console.log("-")
 }

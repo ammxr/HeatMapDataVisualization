@@ -6,9 +6,6 @@ const data = {
   p4: [350,100]
 };
 
-//  figure out range based off picture Wednesday add text label for school 
-
-// For Resolution 600x400
 const xRange = [20,580]
 const yRange = [20,380]
 
@@ -33,8 +30,3 @@ function setup() {
   console.log("\n- - - - Task Complete - - - - ")
 }
 
-
-
-
-function draw() {
-}

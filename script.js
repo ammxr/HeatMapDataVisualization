@@ -1,5 +1,3 @@
-// Notes: 2k x 2k export as jpeg
-
 let img;
 
 const data = {

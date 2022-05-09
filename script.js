@@ -1,3 +1,4 @@
+// vinesh code then make stroke like 2 lighter with opacity down as well  
 let img;
 
 const data = {
@@ -7,6 +8,19 @@ const data = {
   p4: [350,100]
 };
 
+
+const surveyData = {
+	p1: {
+    'stress': 100,
+    'depression': 50
+  }, 
+	p1: {
+    'stress': 20,
+    'depression': 110
+  }
+};
+
+/* Paste Range List for [X Coord] then [Y Coord] */
 const pasteRange = {
   stress: [[20,100],[20,100]],
   depression: [[10,100],[200,400]]
@@ -14,10 +28,18 @@ const pasteRange = {
 
 function setup() {
   createCanvas(2000, 2000);
-  rect(10, 10, 1980, 1980, 20, 20, 20, 20);
-
   
-
+  /* Gradient Border Setup */
+  colorMode(HSB, 360, 100, 100, 100);
+  rectMode(CENTER); 
+  noFill(); 
+  strokeWeight(20);
+  let gradientBorder = drawingContext.createLinearGradient(width/2-200, height/2-200, width/2+200, height/2+200);
+  gradientBorder.addColorStop(0, color(316, 100, 100, 60));
+  gradientBorder.addColorStop(1, color(260, 100, 100, 50)); 
+  drawingContext.strokeStyle = gradientBorder;
+  rect(width/2, height/2, 1970, 1970, 20);
+  
   /* Category Assignment */
   for (let value in data) {
     const dictValue = data[value]
@@ -49,13 +71,17 @@ function setup() {
     let y =  stressRandY;
 
     /* Point */
-    blendMode(MULTIPLY);
+    blendMode(LIGHTEST);
     fill(255,0,0,155);
     strokeWeight(5);
-    stroke(255, 150, 200,90);
+    stroke(255,150,200,90);
     circle(x, y, 10);
     console.log("Printed circle at ("+ x +","+y+")");
   }
   console.log("\n- - - - Task Complete - - - - ")
 }
+
+
+
+
 

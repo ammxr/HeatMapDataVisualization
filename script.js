@@ -1,13 +1,12 @@
-// vinesh code then make stroke like 2 lighter with opacity down as well  
 let img;
 
+/* ( Data variable temporary for testing) */
 const data = {
-	p1: [340,100], 
+  p1: [340,100], 
   p2: [30,100],
   p3: [100,100],
   p4: [350,100]
 };
-
 
 const surveyData = {
 	p1: {
@@ -80,8 +79,4 @@ function setup() {
   }
   console.log("\n- - - - Task Complete - - - - ")
 }
-
-
-
-
 

@@ -1,12 +1,15 @@
+// vinesh code then make stroke like 2 lighter with opacity down as well  
 let img;
 
-/* ( Data variable temporary for testing) */
 const data = {
-  p1: [340,100], 
-  p2: [30,100],
-  p3: [100,100],
-  p4: [350,100]
+	p1: "Ammar", 
+  p2: "Vinesh",
+  p3: "Andy",
+  p4: "Yash",
+  p5: "Haider",
+  p6: "Mr. Marco"
 };
+
 
 const surveyData = {
 	p1: {
@@ -21,12 +24,14 @@ const surveyData = {
 
 /* Paste Range List for [X Coord] then [Y Coord] */
 const pasteRange = {
-  stress: [[20,100],[20,100]],
-  depression: [[10,100],[200,400]]
+  stress: [[20,220],[20,220]],
+  depression: [[220,470],[20,220]],
+  anxiety: [[20,220],[220,470]],
+  pessimism: [[220,470],[220,270]]
 };
 
 function setup() {
-  createCanvas(2000, 2000);
+  createCanvas(500, 500);
   
   /* Gradient Border Setup */
   colorMode(HSB, 360, 100, 100, 100);
@@ -37,7 +42,7 @@ function setup() {
   gradientBorder.addColorStop(0, color(316, 100, 100, 60));
   gradientBorder.addColorStop(1, color(260, 100, 100, 50)); 
   drawingContext.strokeStyle = gradientBorder;
-  rect(width/2, height/2, 1970, 1970, 20);
+  rect(width/2, height/2, (width-30), (height-30), 10);
   
   /* Category Assignment */
   for (let value in data) {
@@ -79,4 +84,8 @@ function setup() {
   }
   console.log("\n- - - - Task Complete - - - - ")
 }
+
+
+
+
 

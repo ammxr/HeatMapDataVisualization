@@ -1,25 +1,10 @@
-// vinesh code then make stroke like 2 lighter with opacity down as well  
 let img;
 
 const data = {
-	p1: "Ammar", 
-  p2: "Vinesh",
-  p3: "Andy",
-  p4: "Yash",
-  p5: "Haider",
-  p6: "Mr. Marco"
-};
-
-
-const surveyData = {
-	p1: {
-    'stress': 100,
-    'depression': 50
-  }, 
-	p1: {
-    'stress': 20,
-    'depression': 110
-  }
+  stress: 1, 
+  depression:1 ,
+  anxiety:1 ,
+  pessimism: 1,
 };
 
 /* Paste Range List for [X Coord] then [Y Coord] */
@@ -31,7 +16,8 @@ const pasteRange = {
 };
 
 function setup() {
-  createCanvas(500, 500);
+  let c= createCanvas(500, 500);
+  background(255)
   
   /* Gradient Border Setup */
   colorMode(HSB, 360, 100, 100, 100);
@@ -46,9 +32,9 @@ function setup() {
   
   /* Category Assignment */
   for (let value in data) {
-    const dictValue = data[value]
-    const pasteRangeXStress = pasteRange['stress']
-    const pasteRangeYStress = pasteRange['stress']
+    console.log(value + " value was:")
+    const pasteRangeXStress = pasteRange[value]
+    const pasteRangeYStress = pasteRange[value]
     
     /* Range of possible X-values for data point */
     let rangeX = {
@@ -58,7 +44,7 @@ function setup() {
     
     /* Random X-coordinate within range */
     let deltaX = rangeX.max - rangeX.min 
-    const stressRandX = Math.round(rangeX.min + Math.random() * deltaX)
+    const randX = Math.round(rangeX.min + Math.random() * deltaX)
 
     /* Range of possible Y-values for data point */
     let rangeY = {
@@ -68,24 +54,19 @@ function setup() {
 
     /* Random Y-coordinate within range */
     let deltaY = rangeY.max - rangeY.min 
-    const stressRandY = Math.round(rangeY.min + Math.random() * deltaY)
+    const randY = Math.round(rangeY.min + Math.random() * deltaY)
 
     /* Point Coordinate */
-    let x = stressRandX;
-    let y =  stressRandY;
+    let x = randX;
+    let y =  randY;
 
     /* Point */
-    blendMode(LIGHTEST);
     fill(255,0,0,155);
     strokeWeight(5);
     stroke(255,150,200,90);
     circle(x, y, 10);
     console.log("Printed circle at ("+ x +","+y+")");
   }
+  saveCanvas(c, 'myCanvas', 'jpg');
   console.log("\n- - - - Task Complete - - - - ")
 }
-
-
-
-
-

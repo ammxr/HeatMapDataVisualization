@@ -12,7 +12,7 @@ const pasteRange = {
   stress: [[20,220],[20,220]],
   depression: [[220,470],[20,220]],
   anxiety: [[20,220],[220,470]],
-  pessimism: [[220,470],[220,270]]
+  pessimism: [[220,470],[220,470]]
 };
 
 function setup(data) {
@@ -20,7 +20,7 @@ function setup(data) {
   background(255)
   
   /* Gradient Border Setup */
-  colorMode(HSB, 360, 100, 100, 100);
+  //colorMode(HSB, 360, 100, 100, 100);
   rectMode(CENTER); 
   noFill(); 
   strokeWeight(20);
@@ -60,10 +60,24 @@ function setup(data) {
     let y =  randY;
 
     /* Point */
-    fill(255,0,0,155);
-    strokeWeight(5);
-    stroke(255,150,200,90);
-    circle(x, y, 10);
+    console.log(value)
+    if (value == "stress") {
+      fill(255,0,0,surveyData[value]);
+      circle(x, y, 10);
+    }
+    if (value == "depression") {
+      fill(0,255,0,surveyData[value]);
+      circle(x, y, 10);
+    }
+    if (value == "anxiety") {
+      fill(0,0,255,surveyData[value]);
+      circle(x, y, 10);
+    }
+    if (value == "pessimism") {
+      fill(255,255,0,surveyData[value]);
+      circle(x, y, 10);
+    }
+    
     console.log("Printed circle at ("+ x +","+y+")");
   }
   saveCanvas(c, 'myCanvas', 'jpg');

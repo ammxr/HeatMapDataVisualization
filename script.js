@@ -96,10 +96,10 @@ yes.onclick = function(){
       console.log("The anxiety percentage is " + anxietyPercentage)
       pessimismPercentage= (pessimismTotal/50)*100
       console.log("The pessimism percentage is " + pessimismPercentage)
-    surveyData["pessimism"] = "0.02" * pessimismPercentage;
-    surveyData["anxiety"] = "0.02" * anxietyPercentage;
-    surveyData["depression"] = "0.02" * depressionPercentage;
-    surveyData["stress"] =  "0.02" * stressPercentage;
+    surveyData["pessimism"] = 255 * (pessimismPercentage/100);
+    surveyData["anxiety"] = 255 * (anxietyPercentage/100);
+    surveyData["depression"] = 255 * (depressionPercentage/100);
+    surveyData["stress"] =  255 * (stressPercentage/100);
     setup(surveyData);
     console.log(surveyData)
   }

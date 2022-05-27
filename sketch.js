@@ -1,11 +1,6 @@
 let img;
 
-const data = {
-	stress: 1, 
-  depression:1 ,
-  anxiety:1 ,
-  pessimism: 1,
-};
+const pointSize= 20
 
 /* Paste Range List for [X Coord] then [Y Coord] */
 const pasteRange = {
@@ -20,7 +15,7 @@ function setup(data) {
   background(255)
   
   /* Gradient Border Setup */
-  //colorMode(HSB, 360, 100, 100, 100);
+  colorMode(HSB, 360, 100, 100, 100);
   rectMode(CENTER); 
   noFill(); 
   strokeWeight(20);
@@ -37,7 +32,7 @@ function setup(data) {
     
     /* Range of possible X-values for data point */
     let rangeX = {
-      min: pasteRangeX[0][0], 
+      min: pasteRangeX[0][0],
       max: pasteRangeX[0][1]
     }
     
@@ -61,23 +56,24 @@ function setup(data) {
 
     /* Point */
     console.log(value)
+    colorMode(RGB);
+    noStroke();
     if (value == "stress") {
       fill(255,0,0,surveyData[value]);
-      circle(x, y, 10);
+      circle(x, y, pointSize);
     }
     if (value == "depression") {
       fill(0,255,0,surveyData[value]);
-      circle(x, y, 10);
+      circle(x, y, pointSize);
     }
     if (value == "anxiety") {
       fill(0,0,255,surveyData[value]);
-      circle(x, y, 10);
+      circle(x, y, pointSize);
     }
     if (value == "pessimism") {
-      fill(255,255,0,surveyData[value]);
-      circle(x, y, 10);
+      fill(255,200,60,surveyData[value]);
+      circle(x, y, pointSize);
     }
-    
     console.log("Printed circle at ("+ x +","+y+")");
   }
   saveCanvas(c, 'myCanvas', 'jpg');

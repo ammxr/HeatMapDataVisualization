@@ -1,105 +1,90 @@
-const surveyData = {
-	stress: null, 
-  depression: null,
-  anxiety: null,
-  pessimism: null,
+let img;
+
+
+const pointSize= 20
+
+/* Paste Range List for [X Coord] then [Y Coord] */
+const pasteRange = {
+  stress: [[20,220],[20,220]],
+  depression: [[220,470],[20,220]],
+  anxiety: [[20,220],[220,470]],
+  pessimism: [[220,470],[220,470]]
 };
 
-//Array | Questions for form
-let yesText = ["2. Do you feel like you are always under a lot of pressure from your parents?", "3. Do you feel like you put yourself under a lot of pressure?", "4. Do you compare your success and achievements to others around you?", "5. Do you have overwhelming family responsibilities?", "6. Do you have a weak friendship with your peers?", "7. Do you often spend most of your free time alone?", "8. Have you seen a therapist or talked to a guardian about any mental health issues?", "9. Do you create ambitious goals for yourself in regards to education or work?", "10. Do you spend more time at work or studying than you do spending with family and friends?", "11. Have you been facing big changes in your family?", "12. Have you been facing big changes in regards to your everyday life (ex. new school)?", "13. Do you often regret the decisions you make and look back at what could be done better?", "14. Do you dislike trying new things and getting out of your comfort zone?", "15. Do you like to look at the negative sides of things when facing issues in your everyday life?", "16. When faced with severe adversity, do you often back down easily?", "17. Do you despise going to school or work?", "18. Your friends and family don’t support you when it comes to achieving goals in regards to post-secondary education (yes they don’t support me; no they do support me)?", "19. Do you or your family members set high standards for you and your achievements?", "20. Do you dislike the life you live?", " "];
-
-// Variable setup | Defaults for response-based/altered variables
-let questionChanger = 0
-let questionValueAdd=-1
-let stress = [0, 7, 7, 4, 5, 0, 0, 3, 1, 6, 3, 2, 0, 2, 0, 0, 4, 6, 7, 2];
-let stressTotal = 0
-let depression = [0, 2, 2, 0, 1, 5, 3, 3, 0, 3, 5, 2, 0, 2, 2, 1, 5, 3, 1, 5];
-let depressionTotal = 0
-let anxiety = [5, 3, 3, 1, 5, 5, 6, 3, 0, 2, 2, 0, 5, 4, 2, 2, 5, 4, 2, 4];
-let anxietyTotal = 0
-let pessimism = [1, 0, 0, 4, 0, 0, 2, 3, 0, 0, 0, 2, 8, 2, 9, 6, 6, 0, 0, 7];
-let pessimismTotal = 0
-let endQuestions = 0
-
-
-// Variable setup | For form options yes/no
-    var box = document.getElementById("box");
-    var box2 = document.getElementById("box2");
-    var box3 = document.getElementById("box3");
-    var box4 = document.getElementById("box4");
-    var yes = document.getElementById("yes");
-    var no = document.getElementById("no");
-
-//box.style.backgroundColor = "#ff0000";
-
-
-/** Response to button click "Yes"
-  * @return  (number)  Shifts through array value (+1)
-  * @return  (number)  stressValueCounter sum + 1  
- */
-
-
-
-yes.onclick = function(){
-  if (endQuestions < 20) {
-      //box.style.backgroundColor = (0,0,255,1);
-      questionValueAdd+=1
-      
-      
-      stressTotal = stressTotal + stress[questionValueAdd] 
-      console.log("Stress value: " + stress[questionValueAdd])
-
-      depressionTotal = depressionTotal + depression[questionValueAdd] 
-      console.log("Depression value: " + depression[questionValueAdd])
-
-      anxietyTotal = anxietyTotal + anxiety[questionValueAdd] 
-      console.log("Anxiety value: " + anxiety[questionValueAdd])
-
-      pessimismTotal = pessimismTotal + pessimism[questionValueAdd] 
-      console.log("Pessimism value: " + pessimism[questionValueAdd])
-
-      
-      document.getElementById("p1").innerHTML = yesText[questionChanger];
-      questionChanger+=1;
-      endQuestions+=1
-  }    
-            
-}
+function setup(data) {
+  let c= createCanvas(500, 500);
+  background(255)
   
-
+  /* Gradient Border Setup */
+  colorMode(HSB, 360, 100, 100, 100);
+  rectMode(CENTER); 
+  noFill(); 
+  strokeWeight(20);
+  let gradientBorder = drawingContext.createLinearGradient(width/2-200, height/2-200, width/2+200, height/2+200);
+  gradientBorder.addColorStop(0, color(316, 100, 100, 60));
+  gradientBorder.addColorStop(1, color(260, 100, 100, 50)); 
+  drawingContext.strokeStyle = gradientBorder;
+  rect(width/2, height/2, (width-30), (height-30), 10);
+  /* Category Assignment */
+  for (let value in data) {
+    console.log(value + " value was:")
+    const pasteRangeX = pasteRange[value]
+    const pasteRangeY = pasteRange[value]
     
-/** Response to button click "No"
-  * @return  (number)  Array value + 1
- */
-  no.onclick = function(){
-    if (endQuestions < 20) {
-      //box.style.backgroundColor = "green";
-      document.getElementById("p1").innerHTML = yesText[questionChanger];
-      questionChanger+=1;
-      questionValueAdd+=1
-      console.log("The total stress value is " + stressTotal)
-      console.log("The total depression value is " + depressionTotal)
-      console.log("The total anxiety value is " + anxietyTotal)
-      console.log("The total pessimism value is " + pessimismTotal)
-      endQuestions+=1 
-
-      
+    /* Range of possible X-values for data point */
+    let rangeX = {
+      min: pasteRangeX[0][0],
+      max: pasteRangeX[0][1]
     }
-  }
+    
+    /* Random X-coordinate within range */
+    let deltaX = rangeX.max - rangeX.min 
+    const randX = Math.round(rangeX.min + Math.random() * deltaX)
 
-  submit.onclick = function(){
-    stressPercentage= (stressTotal/59)*100
-      console.log("The stress percentage is " + stressPercentage)
-      depressionPercentage= (depressionTotal/45)*100
-      console.log("The depression percentage is " + depressionPercentage)
-      anxietyPercentage= (anxietyTotal/63)*100
-      console.log("The anxiety percentage is " + anxietyPercentage)
-      pessimismPercentage= (pessimismTotal/50)*100
-      console.log("The pessimism percentage is " + pessimismPercentage)
-    surveyData["pessimism"] = 255 * (pessimismPercentage/100);
-    surveyData["anxiety"] = 255 * (anxietyPercentage/100);
-    surveyData["depression"] = 255 * (depressionPercentage/100);
-    surveyData["stress"] =  255 * (stressPercentage/100);
-    setup(surveyData);
-    console.log(surveyData)
+    /* Range of possible Y-values for data point */
+    let rangeY = {
+      min: pasteRangeY[1][0], 
+      max: pasteRangeY[1][1]
+    }
+
+    /* Random Y-coordinate within range */
+    let deltaY = rangeY.max - rangeY.min 
+    const randY = Math.round(rangeY.min + Math.random() * deltaY)
+
+    /* Point Coordinate */
+    let x = randX;
+    let y =  randY;
+
+    /* Point */
+    console.log(value)
+    colorMode(RGB);
+    noStroke();
+    if (value == "stress") {
+      fill(255,0,0,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(255,0,0,(surveyData[value]-50));
+      circle(x, y, pointSize);
+    }
+    if (value == "depression") {
+      fill(0,255,0,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(0,255,0,(surveyData[value]-50));
+      circle(x, y, pointSize);
+    }
+    if (value == "anxiety") {
+      fill(0,0,255,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(0,0,255,(surveyData[value]-50));
+      circle(x, y, pointSize);
+    }
+    if (value == "pessimism") {
+      fill(255,200,60,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(255,200,60,(surveyData[value]-50));
+      circle(x, y, pointSize);
+    }
+    console.log("Printed circle at ("+ x +","+y+")");
   }
+  saveCanvas(c, 'myCanvas', 'png');
+  console.log("\n- - - - Task Complete - - - - ")
+}

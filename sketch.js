@@ -1,5 +1,6 @@
 let img;
 
+
 const pointSize= 20
 
 /* Paste Range List for [X Coord] then [Y Coord] */
@@ -60,22 +61,30 @@ function setup(data) {
     noStroke();
     if (value == "stress") {
       fill(255,0,0,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(255,0,0,(surveyData[value]-50));
       circle(x, y, pointSize);
     }
     if (value == "depression") {
       fill(0,255,0,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(0,255,0,(surveyData[value]-50));
       circle(x, y, pointSize);
     }
     if (value == "anxiety") {
       fill(0,0,255,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(0,0,255,(surveyData[value]-50));
       circle(x, y, pointSize);
     }
     if (value == "pessimism") {
       fill(255,200,60,surveyData[value]);
+      strokeWeight(pointSize/4);
+      stroke(255,200,60,(surveyData[value]-50));
       circle(x, y, pointSize);
     }
     console.log("Printed circle at ("+ x +","+y+")");
   }
-  saveCanvas(c, 'myCanvas', 'jpg');
+  saveCanvas(c, 'myCanvas', 'png');
   console.log("\n- - - - Task Complete - - - - ")
 }

@@ -41,7 +41,7 @@ let endQuestions = 0
 
 document.getElementById("p1").innerHTML = yesText[questionChanger];
 yes.onclick = function(){
-  if (endQuestions <= 20) {
+  if (endQuestions < 20) {
       //box.style.backgroundColor = (0,0,255,1);
       questionValueAdd+=1
       
@@ -118,3 +118,5 @@ yes.onclick = function(){
     questionChanger+=1;
     questionValueAdd+=1
   }
+
+

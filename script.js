@@ -118,5 +118,3 @@ yes.onclick = function(){
     questionChanger+=1;
     questionValueAdd+=1
   }
-
-

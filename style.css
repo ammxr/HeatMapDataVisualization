@@ -16,7 +16,6 @@
     float: left;
     margin-top: -2%;
     margin-left: 1%;
-
   }
 
   .header{
@@ -42,6 +41,13 @@
     background-color: transparent;
   }
 
+  .survey{
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 18%;
+    margin-bottom: 30%;
+  }
+  
   .wave,
   .wave::before,
   .wave::after {

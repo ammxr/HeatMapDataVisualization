@@ -39,6 +39,9 @@
     height:100%;
     width:100%;
     background-color: transparent;
+    display: flex;
+    justify-content: center;
+
   }
 
   .survey{
@@ -46,8 +49,10 @@
     margin-right: 30%;
     margin-top: 18%;
     margin-bottom: 30%;
+    border: 2px solid red;
+    position: absolute;
   }
-  
+
   .wave,
   .wave::before,
   .wave::after {

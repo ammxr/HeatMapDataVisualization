@@ -119,4 +119,3 @@ yes.onclick = function(){
     questionValueAdd+=1
   }
 
-
